@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NinetyNineCatsDay1</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header>
+    <% if logged_in? %>
+      <%= current_user.user_name  %>
+      <form action="<%= sessions_url %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" name="" value="Log Out">
+      </form>
+    <% else %>
+      <a href="<%=new_sessions_url%>">Log In</a>
+    <% end %>
+  </header>
+  <%= flash[:notice] if flash[:notice] %>
+
+<%= yield %>
+</body>
+  <footer>
+    <p>
+      99 Cats is the perfect place to rent your dream cat.
+    </p>
+    <p>
+      <%= yield :footer %>
+    </p>
+  </footer>
+</html>

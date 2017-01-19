@@ -1,0 +1,36 @@
+<h1><%= @cat.name %></h1>
+
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    Owner: <%= @cat.owner.user_name %>
+  </tr>
+  <% [:age, :birth_date, :color, :sex].each do |attr_name| %>
+    <tr>
+      <td><%= attr_name %></td>
+      <td><%= @cat.send(attr_name) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "Edit #{@cat.name}", edit_cat_url(@cat) %>
+
+<h2>Rental Requests</h2>
+<table>
+  <tr>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Status</th>
+    <th>Owner</th>
+  </tr>
+  <% @cat.rental_requests.order("start_date").each do |req| %>
+    <%= render "req_tr", req: req %>
+  <% end %>
+</table>
+
+<% content_for :footer do %>
+  This is the show page for <%= @cat.name %>.
+<% end %>
