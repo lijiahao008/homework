@@ -1,0 +1,7 @@
+<% action= comment.persisted? ? edit_comment_url(comment) : post_comments_url %>
+<% method= comment.persisted? ? :patch : :post  %>
+<form action="<%= action %>" method="post">
+  <input type="hidden" name="_method" value="<%= method %>">
+    <textarea name="comment[content]" rows="8" cols="80"><%= comment.content %></textarea><br>
+    <input type="submit" value="Submit">
+</form>

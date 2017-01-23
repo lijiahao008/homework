@@ -1,0 +1,22 @@
+<div class="container">
+
+
+<div class="jumbotron">
+  <h1><%= @sub.title %></h1>
+  <p><%= @sub.description %></p>
+  <% if logged_in? && @sub.user_id == current_user.id%>
+  <p><a class="btn btn-primary btn-lg"
+    <%= link_to "edit", edit_sub_url(@sub) %>
+  </a></p>
+  <% end %>
+</div>
+<br>
+
+<br>
+
+
+<%= link_to "Create a new post", new_post_url %>
+<% @sub.posts.each do |post| %>
+<li>  <%= link_to post.title, post %></li>
+<% end %>
+</div>

@@ -1,0 +1,6 @@
+<h1>All the Subs!</h1>
+<ul class="list-group">
+  <% @subs.each do |sub| %>
+    <li class="list-group-item"><%= link_to sub.title, sub %></li>
+  <% end %>
+</ul>
