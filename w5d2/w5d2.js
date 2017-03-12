@@ -98,3 +98,9 @@ function madLib(verb, adjective, noun){
  }
 
  console.log(isPrime(7));
+
+ function sumOfNPrimes(n){
+   var result = 0;
+   var i = 2;
+   while (){ }
+ }
